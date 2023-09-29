@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/596.6448c068.chunk.js","mappings":"gMAAe,SAASA,IACtB,OAAOC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,aACd,C","sources":["components/MovieCast/index.jsx"],"sourcesContent":["export default function MovieCast() {\n  return <div>MovieCast</div>;\n}\n"],"names":["MovieCast","_jsx","children"],"sourceRoot":""}
