@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/472.a4f8b66e.chunk.js","mappings":"gMAAe,SAASA,IACtB,OAAOC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,gBACd,C","sources":["components/MovieReviews/index.jsx"],"sourcesContent":["export default function MovieReviews() {\n  return <div>MovieReviews</div>;\n}\n"],"names":["MovieReviews","_jsx","children"],"sourceRoot":""}
