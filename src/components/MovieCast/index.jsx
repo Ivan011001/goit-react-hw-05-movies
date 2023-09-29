@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieCreditsByID } from 'services/moviesAPI';
-import { CastList } from './MovieCast.styled';
 
 export default function MovieCast() {
   const [cast, setCast] = useState([]);
