@@ -12,6 +12,11 @@ export const getTrendingMovies = async () => {
   return response.data;
 };
 
+export const getMoviesByQuery = async query => {
+  const response = await axiosInstance.get(`search/movie?query=${query}`);
+  return response.data;
+};
+
 export const getMovieByID = async id => {
   const response = await axiosInstance.get(`movie/${id}`);
   return response.data;

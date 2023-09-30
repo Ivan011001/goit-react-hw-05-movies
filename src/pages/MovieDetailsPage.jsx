@@ -1,11 +1,20 @@
 import { Suspense, useState, useEffect } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import {
+  Link,
+  Outlet,
+  useParams,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 import { getMovieByID } from 'services/moviesAPI';
 import SingleMovie from 'components/SingleMovie';
 
 export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const backLink = location.state?.from ?? '/';
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -23,6 +32,10 @@ export default function MovieDetailsPage() {
   return (
     <div>
       <h1>Movie Details</h1>
+
+      <button onClick={() => navigate(backLink)} type="button">
+        Back
+      </button>
 
       {movie && <SingleMovie movie={movie} />}
 

@@ -10,7 +10,6 @@ export default function MovieCast() {
     const fetchCredits = async () => {
       try {
         const response = await getMovieCreditsByID(movieId);
-        console.log(response);
         setCast(response.cast);
       } catch (error) {
         console.warn(error);
