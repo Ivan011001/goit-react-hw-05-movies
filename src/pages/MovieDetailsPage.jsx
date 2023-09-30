@@ -1,4 +1,4 @@
-import { Suspense, useState, useEffect } from 'react';
+import { Suspense, useState, useEffect, useRef } from 'react';
 import {
   Link,
   Outlet,
@@ -8,21 +8,27 @@ import {
 } from 'react-router-dom';
 import { getMovieByID } from 'services/moviesAPI';
 import SingleMovie from 'components/SingleMovie';
+import { TailSpin } from 'react-loader-spinner';
+import Fallback from 'components/Fallback';
 
 export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
+  const [loading, setLoading] = useState(false);
   const { movieId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const backLink = location.state?.from ?? '/';
+  const backLink = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     const fetchMovie = async () => {
       try {
+        setLoading(true);
         const movie = await getMovieByID(movieId);
         setMovie(movie);
       } catch (error) {
         console.warn(error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -33,9 +39,11 @@ export default function MovieDetailsPage() {
     <div>
       <h1>Movie Details</h1>
 
-      <button onClick={() => navigate(backLink)} type="button">
+      <button onClick={() => navigate(backLink.current)} type="button">
         Back
       </button>
+
+      {loading && <TailSpin />}
 
       {movie && <SingleMovie movie={movie} />}
 
@@ -43,7 +51,7 @@ export default function MovieDetailsPage() {
       <Link to="reviews">Reviews</Link>
 
       <div>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Fallback />}>
           <Outlet />
         </Suspense>
       </div>

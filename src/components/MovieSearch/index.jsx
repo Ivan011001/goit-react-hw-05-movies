@@ -3,7 +3,7 @@ export default function MovieSearch({ onSubmit }) {
     e.preventDefault();
     const form = e.target;
     const movie = form.elements.movie.value;
-    onSubmit(movie);
+    onSubmit(movie.trim());
     form.reset();
   };
 
