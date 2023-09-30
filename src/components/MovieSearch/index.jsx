@@ -18,7 +18,7 @@ export default function MovieSearch({ onSubmit }) {
     <SearchForm onSubmit={onFormSubmit}>
       <SearchFormInput type="text" name="movie" />
       <SearchFormButton>
-        <IoSearchOutline />
+        <IoSearchOutline size={24} />
       </SearchFormButton>
     </SearchForm>
   );

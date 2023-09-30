@@ -1,18 +1,12 @@
 import { Suspense, useState, useEffect, useRef } from 'react';
-import {
-  Link,
-  Outlet,
-  useParams,
-  useLocation,
-  useNavigate,
-} from 'react-router-dom';
+import { Outlet, useParams, useLocation, useNavigate } from 'react-router-dom';
 import { getMovieByID } from 'services/moviesAPI';
 import SingleMovie from 'components/SingleMovie';
 import { TailSpin } from 'react-loader-spinner';
 import Fallback from 'components/Fallback';
 import Section from 'components/Section';
 import { BsFillArrowLeftSquareFill } from 'react-icons/bs';
-import { GoBack } from './MovieDetail.styled';
+import { GoBack, MovieInfo, MoreInfoLink } from './MovieDetail.styled';
 
 export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
@@ -48,8 +42,10 @@ export default function MovieDetailsPage() {
 
       {movie && <SingleMovie movie={movie} />}
 
-      <Link to="cast">Cast</Link>
-      <Link to="reviews">Reviews</Link>
+      <MovieInfo>
+        <MoreInfoLink to="cast">Cast</MoreInfoLink>
+        <MoreInfoLink to="reviews">Reviews</MoreInfoLink>
+      </MovieInfo>
 
       <div>
         <Suspense fallback={<Fallback />}>

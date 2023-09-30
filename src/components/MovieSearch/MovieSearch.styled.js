@@ -12,20 +12,16 @@ export const SearchForm = styled.form`
 `;
 
 export const SearchFormButton = styled.button`
-  display: inline-block;
-  width: 48px;
-  height: 48px;
-  border: 0;
-  background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg');
-  background-size: 40%;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.6;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  outline: none;
+  background-color: transparent;
+  border: none;
+  padding: 0;
 
-  &:hover {
-    opacity: 1;
+  & > svg {
+    margin-left: 8px;
+    transition: stroke 400ms ease;
+    &:hover {
+      stroke: red;
+    }
   }
 `;
 
