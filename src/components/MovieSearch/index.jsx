@@ -1,3 +1,10 @@
+import {
+  SearchForm,
+  SearchFormButton,
+  SearchFormInput,
+} from './MovieSearch.styled';
+import { IoSearchOutline } from 'react-icons/io5';
+
 export default function MovieSearch({ onSubmit }) {
   const onFormSubmit = e => {
     e.preventDefault();
@@ -8,11 +15,11 @@ export default function MovieSearch({ onSubmit }) {
   };
 
   return (
-    <div onSubmit={onFormSubmit}>
-      <form>
-        <input type="text" name="movie" />
-        <button>Search</button>
-      </form>
-    </div>
+    <SearchForm onSubmit={onFormSubmit}>
+      <SearchFormInput type="text" name="movie" />
+      <SearchFormButton>
+        <IoSearchOutline />
+      </SearchFormButton>
+    </SearchForm>
   );
 }

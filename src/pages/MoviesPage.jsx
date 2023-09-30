@@ -4,6 +4,7 @@ import { getMoviesByQuery } from 'services/moviesAPI';
 import MovieSearch from 'components/MovieSearch';
 import MovieList from 'components/MovieList';
 import { TailSpin } from 'react-loader-spinner';
+import Section from 'components/Section';
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
@@ -35,10 +36,10 @@ export default function MoviesPage() {
   };
 
   return (
-    <div>
+    <Section title="Search Movies">
       <MovieSearch onSubmit={changeQueryString} />
       {loading && <TailSpin />}
       <MovieList movies={movies} />
-    </div>
+    </Section>
   );
 }

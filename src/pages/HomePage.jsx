@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import MovieList from 'components/MovieList';
 import { getTrendingMovies } from 'services/moviesAPI';
 import { TailSpin } from 'react-loader-spinner';
+import Section from 'components/Section';
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
@@ -24,10 +25,9 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div>
-      <h1>Trending Today</h1>
+    <Section title="Trending Today">
       {loading && <TailSpin />}
       <MovieList movies={movies} />
-    </div>
+    </Section>
   );
 }

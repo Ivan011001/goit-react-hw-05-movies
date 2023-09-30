@@ -10,6 +10,9 @@ import { getMovieByID } from 'services/moviesAPI';
 import SingleMovie from 'components/SingleMovie';
 import { TailSpin } from 'react-loader-spinner';
 import Fallback from 'components/Fallback';
+import Section from 'components/Section';
+import { BsFillArrowLeftSquareFill } from 'react-icons/bs';
+import { GoBack } from './MovieDetail.styled';
 
 export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
@@ -36,12 +39,10 @@ export default function MovieDetailsPage() {
   }, [movieId]);
 
   return (
-    <div>
-      <h1>Movie Details</h1>
-
-      <button onClick={() => navigate(backLink.current)} type="button">
-        Back
-      </button>
+    <Section title="Movie Details">
+      <GoBack onClick={() => navigate(backLink.current)} type="button">
+        <BsFillArrowLeftSquareFill size={24} /> Go back
+      </GoBack>
 
       {loading && <TailSpin />}
 
@@ -55,6 +56,6 @@ export default function MovieDetailsPage() {
           <Outlet />
         </Suspense>
       </div>
-    </div>
+    </Section>
   );
 }
